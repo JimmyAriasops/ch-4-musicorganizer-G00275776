@@ -74,12 +74,30 @@ public class MusicOrganizer
         Random rand = new Random();
         int index = rand.nextInt(tracks.size());
         playTrack(index);
-        
-        
-    
-    
-    
+        System.out.println(index);
     }
+    /**
+     * Shuffle all the tracks and play only once.
+     */
+    public void shuffleTracks()
+    {
+        Random rand = new Random();
+        int total = getNumberOfTracks(); 
+        
+        for (int remaining = total; remaining > 0; remaining --)
+        {
+            int index = rand.nextInt(remaining);
+            Track track = tracks.get(index);
+            playTrack(index);
+            tracks.remove(index);
+            tracks.add(track);
+        }
+        
+        
+        
+        
+    }
+
     
     /**
      * Return the number of tracks in the collection.
